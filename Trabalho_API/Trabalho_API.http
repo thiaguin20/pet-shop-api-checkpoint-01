@@ -1,0 +1,9 @@
+@Trabalho_API_HostAddress = http://localhost:5217
+
+GET {{Trabalho_API_HostAddress}}/api/clientes
+Accept: application/json
+
+###
+
+GET {{Trabalho_API_HostAddress}}/api/clientes/1
+Accept: application/json
