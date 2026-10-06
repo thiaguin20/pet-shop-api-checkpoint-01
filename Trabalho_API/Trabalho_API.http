@@ -1,9 +1,123 @@
 @Trabalho_API_HostAddress = http://localhost:5217
 
+### Listar clientes
 GET {{Trabalho_API_HostAddress}}/api/clientes
 Accept: application/json
 
-###
+### Filtrar clientes pelo nome
+GET {{Trabalho_API_HostAddress}}/api/clientes?nome=Ana
+Accept: application/json
 
+### Consultar cliente pelo ID
 GET {{Trabalho_API_HostAddress}}/api/clientes/1
 Accept: application/json
+
+### Criar cliente
+POST {{Trabalho_API_HostAddress}}/api/clientes
+Content-Type: application/json
+
+{
+  "nome": "Ana Souza",
+  "telefone": "(18) 99999-1111",
+  "email": "ana.souza@email.com"
+}
+
+### Alterar cliente
+PUT {{Trabalho_API_HostAddress}}/api/clientes/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nome": "Ana Souza Atualizada",
+  "telefone": "(18) 99999-1111",
+  "email": "ana.souza@email.com"
+}
+
+### Excluir cliente
+DELETE {{Trabalho_API_HostAddress}}/api/clientes/1
+
+### Listar pets
+GET {{Trabalho_API_HostAddress}}/api/pets
+Accept: application/json
+
+### Filtrar pets por espécie
+GET {{Trabalho_API_HostAddress}}/api/pets?especie=Cachorro
+Accept: application/json
+
+### Filtrar pets pelo cliente
+GET {{Trabalho_API_HostAddress}}/api/pets?clienteId=1
+Accept: application/json
+
+### Criar pet
+POST {{Trabalho_API_HostAddress}}/api/pets
+Content-Type: application/json
+
+{
+  "nome": "Rex",
+  "especie": "Cachorro",
+  "raca": "Vira-lata",
+  "clienteId": 1
+}
+
+### Alterar pet
+PUT {{Trabalho_API_HostAddress}}/api/pets/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nome": "Rex Atualizado",
+  "especie": "Cachorro",
+  "raca": "Vira-lata",
+  "clienteId": 1
+}
+
+### Excluir pet
+DELETE {{Trabalho_API_HostAddress}}/api/pets/1
+
+### Listar agendamentos
+GET {{Trabalho_API_HostAddress}}/api/agendamentos
+Accept: application/json
+
+### Filtrar agendamentos pelo status
+GET {{Trabalho_API_HostAddress}}/api/agendamentos?status=Agendado
+Accept: application/json
+
+### Filtrar agendamentos pela data
+GET {{Trabalho_API_HostAddress}}/api/agendamentos?data=2026-12-15
+Accept: application/json
+
+### Criar agendamento
+POST {{Trabalho_API_HostAddress}}/api/agendamentos
+Content-Type: application/json
+
+{
+  "petId": 1,
+  "dataHora": "2026-12-15T14:30:00",
+  "servico": "Banho e tosa",
+  "status": "Agendado"
+}
+
+### Alterar agendamento
+PUT {{Trabalho_API_HostAddress}}/api/agendamentos/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "petId": 1,
+  "dataHora": "2026-12-15T15:00:00",
+  "servico": "Banho e tosa",
+  "status": "Concluido"
+}
+
+### Excluir agendamento
+DELETE {{Trabalho_API_HostAddress}}/api/agendamentos/1
+
+### Exemplo de validação com e-mail inválido
+POST {{Trabalho_API_HostAddress}}/api/clientes
+Content-Type: application/json
+
+{
+  "nome": "Cliente Teste",
+  "telefone": "(18) 99999-0000",
+  "email": "email-invalido"
+}
